@@ -19,7 +19,7 @@ const Todo = () => {
             No tasks yet. Add one above!
           </p>
         </div>
-        <div className="text-[12px] flex justify-center gap-[4px] ">
+        <div className="text-[12px] flex justify-cd /enter gap-[4px] ">
           <p className=" text-gray-500">Powered by</p>
           <a href="#" className="text-blue-400">
             Pinecone Academy
