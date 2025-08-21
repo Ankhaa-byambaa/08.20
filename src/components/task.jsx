@@ -15,7 +15,7 @@ export const Task = (props) => {
             <input
               type="checkbox"
               valeu="yes"
-              checked
+              defaultChecked
               className="w-[20px] h-[20px]"
             ></input>
           )}
