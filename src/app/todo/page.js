@@ -1,6 +1,7 @@
 const Todo = () => {
   return (
     <>
+      <div className="flex justify-center"></div>
       <div className="bg-white w-[377px] h-[290px] rounded-[6px] flex flex-col gap-10 pt-6 pb-6 pl-4 pr-4 ">
         <div>
           <p className="text-black font-inter text-[20px] flex justify-center items-center">
