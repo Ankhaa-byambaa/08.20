@@ -1,3 +1,4 @@
+"use client";
 import { Button, ButtonBlue, Task, Total } from "@/components";
 import { useState } from "react";
 const Todo = () => {
@@ -17,10 +18,11 @@ const Todo = () => {
     setTodos([...todos, { title: inputValue, isDone: true }]);
     setInputValue("");
   };
+  console.log(inputValue);
   return (
     <>
       <div className=" flex justify-center pt-15 bg-black w-full h-screen">
-        <div className="bg-white w-[377px] h-[290px] rounded-[6px] flex flex-col gap-10 pt-6 pb-6 pl-4 pr-4 ">
+        <div className=" bg-white w-[377px] h-[290px] rounded-[6px] flex flex-col gap-10 pt-6 pb-6 pl-4 pr-4 ">
           <div>
             <p className="text-black font-bold text-[20px] flex justify-center items-center mb-[20px] gochihHandRegular ">
               To-Do list
@@ -28,12 +30,12 @@ const Todo = () => {
             <div className="mb-[20px] flex gap-[6px]">
               <input
                 value={inputValue}
-                type={text}
+                type="text"
                 onChange={handleOnChange}
                 placeholder="Add a new task..."
                 className="border-[1px] border-neutral-200 rounded-[6px] w-[280px] h-[40px]  text-black flex justify-center p-3"
               ></input>
-              {/* <ButtonBlue blue="Add" click={}></ButtonBlue> */}
+              <ButtonBlue blue="Add" click={OnClick}></ButtonBlue>
             </div>
             <div className="flex flex-nowrap gap-[6px] mb-[32px]">
               <button
@@ -64,7 +66,8 @@ const Todo = () => {
         <br></br>
         <div className=" flex flex-col gap-[40px] justify-center pl-10 ">
           {/* task check */}
-          <Task isCompleted={task.isCompleted}></Task>
+          <Task isCompleted={task.isCompleted} value={inputValue}></Task>
+
           <Total></Total>
         </div>
       </div>
