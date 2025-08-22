@@ -16,7 +16,7 @@ export const Task = (props) => {
               type="checkbox"
               valeu="yes"
               defaultChecked
-              className="w-[20px] h-[20px]"
+              className="w-[20px] h-[20px]outline outline-offset-[1px]"
             ></input>
           )}
 
@@ -24,7 +24,7 @@ export const Task = (props) => {
             className={
               props.isCompleted
                 ? "text-[14px] text-black"
-                : "line-through text-[14px] text-black"
+                : "line-through text-[14px] text-black "
             }
           >
             two years {props.valeu}
