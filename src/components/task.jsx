@@ -1,13 +1,7 @@
 export const Task = ({ isDone, valeu }) => {
   return (
     <>
-      <div
-        className={
-          isDone
-            ? "bg-zinc-100 w-[345px] h-[62px] p-[16px] rounded-md flex felx-nowrap justify-between items-center "
-            : "bg-zinc-100 w-[345px] h-[62px] p-[16px] rounded-md flex felx-nowrap justify-between items-center "
-        }
-      >
+      <div className="bg-zinc-100 w-[345px] h-[62px] p-[16px] rounded-md flex felx-nowrap justify-between items-center mb-10 ">
         <div className=" flex gap-[10px] ">
           {isDone ? (
             <input type="checkbox" className="w-[20px] h-[20px]"></input>
@@ -15,7 +9,6 @@ export const Task = ({ isDone, valeu }) => {
             <input
               type="checkbox"
               valeu="yes"
-              defaultChecked
               className="w-[20px] h-[20px]outline outline-offset-[1px]"
             ></input>
           )}

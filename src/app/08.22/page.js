@@ -9,7 +9,7 @@ const StatePage = () => {
     setInputValue(a.target.value);
   };
   const OnClick = () => {
-    setTodos([...todos, { title: inputValue, isDone: true }]);
+    setTodos([...todos, { tittle: inputValue, isDone: true }]);
     setInputValue("");
   };
   console.log(inputValue);
