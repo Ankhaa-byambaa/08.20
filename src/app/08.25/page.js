@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Todo } from "@/components";
+import { Todo, SwitchColor, SearchFilter, DragAndDropList } from "@/components";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
@@ -92,7 +92,10 @@ const Home = () => {
             })}
           </div>
         </div> */}
-        <Todo></Todo>
+        <Todo />
+        <SwitchColor />
+        <SearchFilter />
+        <DragAndDropList />
       </div>
     </>
   );
