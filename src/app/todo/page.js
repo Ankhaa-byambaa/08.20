@@ -1,73 +1,119 @@
 "use client";
-import { Button, ButtonBlue, Task, Total } from "@/components";
+import { Button, Total } from "@/components";
 import { useState } from "react";
+
+// 1. butest ee gargah
+// 2. input deerh utgaa hadgalah
+// 3. input deerjh utgaa click hiih ued garch irdeg bolgoh
+// 4. all deer bugd
+// 5. isDone false ued active deer haruulah
+// 6. isDone true ued completed haruulah
+
 const Todo = () => {
-  // const task = {
-  //   isCompleted: true,
-  //   click: true,
-  // };
-
-  const [todos, setTodos] = useState([]);
-  // input iin value-g hadgalah
   const [inputValue, setInputValue] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [isDone, setIsDone] = useState(true);
+  const [filterStatus, setFilterStatus] = useState("all");
 
-  const handleOnChange = (a) => {
-    setInputValue(a.target.value);
+  const handleOnChange = (event) => {
+    setInputValue(event.target.value);
   };
-  const OnClick = () => {
-    setTodos([...todos, { title: inputValue, isDone: true }]);
-    setInputValue("");
-    <Task value={inputValue}></Task>;
+  let total = 0;
+  const handleAddTodo = () => {
+    setTodos([...todos, inputValue]);
+    console.log("add todo", todos);
+    setIsDone(false);
+    total++;
   };
-  console.log(inputValue);
+  let comp = 0;
+  const handleDeleteTodo = (index) => {
+    const newTodos = todos.filter((el, i) => index !== i);
+    setTodos(newTodos);
+  };
+  let a = <Total completed={comp} total={total}></Total>;
+  let ptag = "";
+  isDone ? (ptag = "No tasks yet. Add one above!") : "";
+  isDone ? "" : a;
+  let count;
+
+  //   filterStatus.map(() => {
+  //     if (filterStatus === "active") {
+  //       count++;
+  //     }
+  //     return;
+  //   });
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filterStatus === "all") return true;
+    if (filterStatus === "active") return !todo.isDone;
+    return todo.isDone;
+  });
+
   return (
-    <>
-      <div className=" flex justify-center pt-15 bg-black w-full h-screen">
-        <div className=" bg-white w-[377px] h-[462px] rounded-[6px] flex flex-col  pb-6 pl-4 pr-4 pt-6 ">
-          {/* <div> */}
-          <p className="text-black font-bold text-[20px] flex justify-center items-center mb-[20px] gochihHandRegular ">
-            To-Do list
-          </p>
-          <div className="mb-[20px] flex gap-[6px]">
-            <input
-              value={inputValue}
-              type="text"
-              onChange={handleOnChange}
-              placeholder="Add a new task..."
-              className="border-[1px] border-neutral-200 rounded-[6px] w-[280px] h-[40px]  text-black flex justify-center p-3"
-            ></input>
-            <ButtonBlue blue="Add" click={OnClick}></ButtonBlue>
-          </div>
-          <div className="flex flex-nowrap gap-[6px] mb-[32px]">
-            <button
-              className={
-                todos.isDone
-                  ? "bg-blue-400 border-[1px] rounded-[6px] text-[3 text-white pl-3 pr-3 pt-1 pb-1 w-auto h-[40px] font-inter"
-                  : "bg-[#F3F4F6] border-[1px] rounded-[6px] text-[3 text-[#363636] pl-3 pr-3 pt-1 pb-1 w-auto h-[40px] font-inter"
-              }
-            >
-              All
-            </button>
-            <Button name="Active"></Button>
-            <Button name="Completed"></Button>
-          </div>
+    <div className="flex justify-center items-center h-screen">
+      <div
+        className=" 
+      bg-white w-[377px] h-auto  rounded-md pb-6 pl-4 pr-4 pt-6  flex flex-col gap-5"
+      >
+        <p className="text-black font-bold text-[20px] flex justify-center items-center  gochihHandRegular ">
+          To-Do list
+        </p>
+        <div className=" flex flex-row gap-[10px]">
+          <input
+            onChange={handleOnChange}
+            type="text"
+            placeholder="add a new task ..."
+            className="border-[1px] border-neutral-200 rounded-[6px] w-[280px] h-[40px]  text-black flex justify-center p-3"
+          />
+          <button
+            onClick={handleAddTodo}
+            className="bg-[#3C82F6] border-[1px] rounded-[6px] text-[3 text-white pl-3 pr-3 pt-1 pb-1 w-[59px] h-[40px] font-inter "
+          >
+            Add
+          </button>
+        </div>
+        <div className="flex gap-[6px] ">
+          <Button name={"all"} filterStatus={filterStatus} />
+          <Button name={"active"} filterStatus={filterStatus} />
+          <Button name={"completed"} filterStatus={filterStatus} />
+        </div>
+        <p className="text-[14px] text-[#6B7280] flex justify-center  ">
+          {ptag}
+        </p>
 
-          <p className="text-[14px] text-gray-500 flex justify-center mb-6 ">
-            No tasks yet. Add one above!
-          </p>
-          <Task isDone={todos.isDone}></Task>
-          <div className="text-[12px] flex justify-center  gap-[4px] ">
-            <p className=" text-gray-500">Powered by</p>
-            <a href="#" className="text-blue-400">
+        <div>
+          {filteredTodos.map((todo, index) => (
+            <div className="bg-[#F9FAFB] w-[345px] h-[62px] flex flex-row  justify-between items-center py-4 px-4 ">
+              <div className="flex flex-row gap-[10px]">
+                <input type="checkbox" className="bg-[#0275FF] text-white" />
+                <div
+                  key={index}
+                  className="text-black  flex gap-[10px] rounded-md"
+                >
+                  {todo}
+                </div>
+              </div>
+
+              <button
+                className="bg-rose-100 w-[67px] h-[30px] py-[6px] px-3 text-[14px] text-rose-500 rounded-[6px]"
+                onClick={() => handleDeleteTodo(index)}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+
+          {/* <div>{a}</div> */}
+
+          <div className="text-[12px] flex justify-center  gap-[4px] mt-5 ">
+            <p className=" text-[#6B7280]">Powered by</p>
+            <a href="https://pinecone.mn/" className="text-[#3B73ED]">
               Pinecone Academy
             </a>
           </div>
-          {/* </div> */}
         </div>
-
-        {/* task check */}
       </div>
-    </>
+    </div>
   );
 };
 export default Todo;

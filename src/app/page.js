@@ -69,6 +69,7 @@ const Home = () => {
           {arr.map((arr) => {
             return (
               <Card
+                // key={0}
                 tittle={arr.tittle}
                 Imgsrc={arr.Imgsrc}
                 blog={arr.blog}

@@ -13,7 +13,7 @@ const Home = () => {
   };
 
   let ptag = "";
-  isDone ? (ptag = "Toggle me! ") : " ";
+  isDone ? (ptag = "Toggle me! ") : "";
 
   //   const [inputValue2, setInputValue2] = useState("");
   //   const [todos, setTodos] = useState([]);

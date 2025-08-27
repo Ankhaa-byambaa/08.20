@@ -36,7 +36,7 @@ export const Todo = () => {
         />
         <button
           onClick={handleAddTodo}
-          className="bg-indigo-300 w-30 h-6 text-black rounded-md "
+          className="bg-[#3C82F6] w-30 h-6 text-black rounded-md "
         >
           Add
         </button>
