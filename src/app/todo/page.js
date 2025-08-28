@@ -14,6 +14,9 @@ const Todo = () => {
   const [todos, setTodos] = useState([]);
   const [isDone, setIsDone] = useState(true);
   const [filterStatus, setFilterStatus] = useState("all");
+  const handleOnClick = () => {
+    setFilterStatus();
+  };
 
   const handleOnChange = (event) => {
     setInputValue(event.target.value);
@@ -83,7 +86,10 @@ const Todo = () => {
 
         <div>
           {filteredTodos.map((todo, index) => (
-            <div className="bg-[#F9FAFB] w-[345px] h-[62px] flex flex-row  justify-between items-center py-4 px-4 ">
+            <div
+              key={index}
+              className="bg-[#F9FAFB] w-[345px] h-[62px] flex flex-row  justify-between items-center py-4 px-4 "
+            >
               <div className="flex flex-row gap-[10px]">
                 <input type="checkbox" className="bg-[#0275FF] text-white" />
                 <div
