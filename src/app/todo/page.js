@@ -1,13 +1,7 @@
 "use client";
 import { Button, Total } from "@/components";
 import { useState } from "react";
-
-// 1. butest ee gargah
-// 2. input deerh utgaa hadgalah
-// 3. input deerjh utgaa click hiih ued garch irdeg bolgoh
-// 4. all deer bugd
-// 5. isDone false ued active deer haruulah
-// 6. isDone true ued completed haruulah
+import { v4 as uuidv4 } from "uuid";
 
 const Todo = () => {
   const [inputValue, setInputValue] = useState("");
@@ -87,13 +81,13 @@ const Todo = () => {
         <div>
           {filteredTodos.map((todo, index) => (
             <div
-              key={index}
+              key={uuidv4()}
               className="bg-[#F9FAFB] w-[345px] h-[62px] flex flex-row  justify-between items-center py-4 px-4 "
             >
-              <div key={index} className="flex flex-row gap-[10px]">
+              <div key={uuidv4()} className="flex flex-row gap-[10px]">
                 <input type="checkbox" className="bg-[#0275FF] text-white" />
                 <div
-                  key={index}
+                  key={uuidv4()}
                   className="text-black  flex gap-[10px] rounded-md"
                 >
                   {todo}
@@ -101,7 +95,7 @@ const Todo = () => {
               </div>
 
               <button
-                key={index}
+                key={uuidv4()}
                 className="bg-rose-100 w-[67px] h-[30px] py-[6px] px-3 text-[14px] text-rose-500 rounded-[6px]"
                 onClick={() => handleDeleteTodo(index)}
               >
