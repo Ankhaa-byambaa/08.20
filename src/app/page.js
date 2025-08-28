@@ -6,31 +6,32 @@ import { v4 as uuidv4 } from "uuid";
 const Todo = () => {
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([]);
-  const [isDone, setIsDone] = useState(true);
+  const [isDone2, setIsDone2] = useState(true);
   const [filterStatus, setFilterStatus] = useState("all");
-  const handleOnClick = () => {
-    setFilterStatus();
-  };
 
   const handleOnChange = (event) => {
     setInputValue(event.target.value);
   };
   let total = 0;
   const handleAddTodo = () => {
-    setTodos([...todos, { tittle: inputValue, isDone: false, id: uuidv4() }]);
-    console.log("add todo", todos);
-    setIsDone(false);
-    total++;
+    setTodos([
+      ...todos,
+      { tittle: inputValue, iscompleted: false, id: uuidv4() },
+    ]);
+
+    setIsDone2(false);
   };
   let comp = 0;
   const handleDeleteTodo = (index) => {
     const newTodos = todos.filter((el, i) => index !== i);
     setTodos(newTodos);
   };
-  let a = <Total completed={comp} total={total}></Total>;
+
   let ptag = "";
-  isDone ? (ptag = "No tasks yet. Add one above!") : "";
-  isDone ? "" : a;
+  let p;
+  inputValue.length === 0 ? (ptag = "No tasks yet. Add one above!") : "";
+  isDone2 ? "" : (p = <Total completed={comp} total={total} />);
+
   let count;
 
   //   filterStatus.map(() => {
@@ -45,6 +46,9 @@ const Todo = () => {
     if (filterStatus === "active") return !todo.isDone;
     return todo.isDone;
   });
+  const handleFilteredStatus = (status) => {
+    setFilterStatus(status);
+  };
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -70,9 +74,21 @@ const Todo = () => {
           </button>
         </div>
         <div className="flex gap-[6px] ">
-          <Button name={"all"} filterStatus={filterStatus} />
-          <Button name={"active"} filterStatus={filterStatus} />
-          <Button name={"completed"} filterStatus={filterStatus} />
+          <Button
+            name={"all"}
+            filterStatus={filterStatus}
+            onclick={() => handleFilteredStatus("all")}
+          />
+          <Button
+            name={"active"}
+            filterStatus={filterStatus}
+            onclick={() => handleFilteredStatus("active")}
+          />
+          <Button
+            name={"completed"}
+            filterStatus={filterStatus}
+            onclick={() => handleFilteredStatus("completed")}
+          />
         </div>
         <p className="text-[14px] text-[#6B7280] flex justify-center  ">
           {ptag}
@@ -100,7 +116,7 @@ const Todo = () => {
             </div>
           ))}
 
-          {/* <div>{a}</div> */}
+          <div>{p}</div>
 
           <div className="text-[12px] flex justify-center  gap-[4px] mt-5 ">
             <p className=" text-[#6B7280]">Powered by</p>
