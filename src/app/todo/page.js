@@ -90,7 +90,7 @@ const Todo = () => {
               key={index}
               className="bg-[#F9FAFB] w-[345px] h-[62px] flex flex-row  justify-between items-center py-4 px-4 "
             >
-              <div className="flex flex-row gap-[10px]">
+              <div key={index} className="flex flex-row gap-[10px]">
                 <input type="checkbox" className="bg-[#0275FF] text-white" />
                 <div
                   key={index}
@@ -101,6 +101,7 @@ const Todo = () => {
               </div>
 
               <button
+                key={index}
                 className="bg-rose-100 w-[67px] h-[30px] py-[6px] px-3 text-[14px] text-rose-500 rounded-[6px]"
                 onClick={() => handleDeleteTodo(index)}
               >
