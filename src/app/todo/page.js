@@ -17,7 +17,7 @@ const Todo = () => {
   };
   let total = 0;
   const handleAddTodo = () => {
-    setTodos([...todos, inputValue]);
+    setTodos([...todos, { tittle: inputValue, isDone: false, id: uuidv4() }]);
     console.log("add todo", todos);
     setIsDone(false);
     total++;
@@ -87,7 +87,7 @@ const Todo = () => {
               <div className="flex flex-row gap-[10px]">
                 <input type="checkbox" className="bg-[#0275FF] text-white" />
                 <div className="text-black  flex gap-[10px] rounded-md">
-                  {todo}
+                  {todo.tittle}
                 </div>
               </div>
 
