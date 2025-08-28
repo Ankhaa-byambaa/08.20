@@ -81,21 +81,17 @@ const Todo = () => {
         <div>
           {filteredTodos.map((todo, index) => (
             <div
-              key={uuidv4()}
+              key={todo.id}
               className="bg-[#F9FAFB] w-[345px] h-[62px] flex flex-row  justify-between items-center py-4 px-4 "
             >
-              <div key={uuidv4()} className="flex flex-row gap-[10px]">
+              <div className="flex flex-row gap-[10px]">
                 <input type="checkbox" className="bg-[#0275FF] text-white" />
-                <div
-                  key={uuidv4()}
-                  className="text-black  flex gap-[10px] rounded-md"
-                >
+                <div className="text-black  flex gap-[10px] rounded-md">
                   {todo}
                 </div>
               </div>
 
               <button
-                key={uuidv4()}
                 className="bg-rose-100 w-[67px] h-[30px] py-[6px] px-3 text-[14px] text-rose-500 rounded-[6px]"
                 onClick={() => handleDeleteTodo(index)}
               >
